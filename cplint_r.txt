@@ -1,0 +1,381 @@
+Cplint_R
+1 About
+  1.1 About
+  1.2 Terminology
+2 Installation
+  2.1 Dependencies
+    2.1.1 Prolog
+    2.1.2 R
+3 Examples
+4 Protocol
+  4.1 Interface
+  4.2 Internals
+    4.2.1 Interface predicates
+    4.2.2 Plotting predicates
+    4.2.3 List handling
+    4.2.4 Main data frame creation
+    4.2.5 Helpers
+5 Thanks
+6 References
+Cplint_R
+********
+
+This manual is for Cplint_R.
+
+1 About
+*******
+
+1.1 About
+=========
+
+The purpose of this library is to provide an interface between the
+Cplint(1) suite for SWI Prolog(2) and R(3) to handle graphs made with
+the ggplot2(4) package.
+
+This means that the currently available C3js(5) graphing functions are
+also available for R.
+
+1.2 Terminology
+===============
+
+Any code between '<' '>' represents pseudocode.
+
+The symbol '#' represents an unsigned integer.
+
+Oprional parameters are encapsuled between '[' ']'.
+
+   ---------- Footnotes ----------
+
+   (1) See item *[Cplint]* in *note Cplint: References.
+
+   (2) See item *[SWI Prolog]* in *note SWI Prolog: References.
+
+   (3) See item *[R]* in *note R: References.
+
+   (4) See item *[ggplot2]* in *note ggplot2: References.
+
+   (5) See item *[C3js]* in *note C3js: References.
+
+2 Installation
+**************
+
+Cplint_R is provided as part of the (1) package.
+
+You can also install it manually with 'pack_install('cplint_r').' using
+the 'swipl' command.
+
+2.1 Dependencies
+================
+
+Cplint_R has both Prolog and R dependencies:
+
+2.1.1 Prolog
+------------
+
+   * lists
+
+   * Cplint
+
+   * Rserve Client
+
+   * SWISH R library ???
+
+2.1.2 R
+-------
+
+   * ggplot2
+
+   ---------- Footnotes ----------
+
+   (1) See item *[Cplint on SWISH]* in *note Cplint on SWISH:
+References.
+
+3 Examples
+**********
+
+TODO
+
+4 Protocol
+**********
+
+4.1 Interface
+=============
+
+The following is a list of exported predicates available to the library
+users'.
+
+Each predicate corresponds to one of the following categories
+   * Helper: specific of this library.
+
+   * Pita: it's part of Cplint.
+
+   * Mcintyre: it's part of Cplint.
+
+   * Auc: it's part of Cplint.
+
+Each argument of a predicate correponds to a data type.  See the SWI
+Prolog data types manual(1) and the Learn Prolog Now manual(2).  Have a
+look at the Cplint help manual(3) to learn in details about the
+functionality of each predicate.
+
+ -- Helper: build_xy_list(X:list,Y:list,OUT:list)
+     Given to lists X and Y build an output list OUT in the form
+     '[X1-Y1,X2-Y2,...,XN-YN]'.
+
+ -- Helper: r_row(X:atom,Y:atom,R(X,Y):atom)
+     Given two atoms X and Y, build a relationship R(X,Y).
+
+ -- Helper: get_set_from_xy_list(L:list,R:list)
+     Given an input list L in the form '[X1-Y1,X2-Y2,...,XN-YN]',
+     transform it in an output list R in the form
+     '[r(X1,Y1),r(X2,Y2),...,r(XN,YN)]'.  This means that 'R' will
+     contain an X-Y relationship which can be then passed to an R data
+     frame.
+
+ -- Pita: prob_bar_r(:QUERY:atom)
+     The predicate computes and plots the probability of QUERY as a bar
+     chart with a bar for the probability of QUERY true and a bar for
+     the probability of QUERY false.  If QUERY is not ground, it returns
+     in backtracking all ground instantiations of QUERY together with
+     their probabilities.
+
+ -- Pita: prob_bar_r(:QUERY:atom,:EVIDENCE:atom)
+     The predicate computes and plots the probability of QUERY given
+     EVIDENCE as a bar chart with a bar for the probability of QUERY
+     true and a bar for the probability of QUERY false given EVIDENCE.
+     If QUERY / EVIDENCE are not ground, it returns in backtracking all
+     ground instantiations of QUERY / EVIDENCE together with their
+     probabilities.
+
+ -- Mcintyre: mc_prob_bar_r(:QUERY:atom,-PROBABILITY:dict)
+     See prob_bar_r/2.
+
+ -- Mcintyre: mc_sample_bar_r(:QUERY:atom,+SAMPLES:int)
+     The predicate samples QUERY a number of SAMPLES times and plots a
+     bar chart with a bar for the number of successes and a bar for the
+     number of failures.  If QUERY is not ground, it considers it as an
+     existential query.
+
+ -- Mcintyre: mc_sample_arg_bar_r(:QUERY:atom,+SAMPLES:int,?ARG:var)
+     The predicate samples QUERY SAMPLES times.  ARG should be a
+     variable in QUERY.  The predicate plots a bar chart with a bar for
+     each possible value of L, the list of values of ARG for which QUERY
+     succeeds in a world sampled at random.  The size of the bar is the
+     number of samples returning that list of values.
+
+ -- Mcintyre:
+          mc_sample_arg_first_bar_r(:QUERY:atom,+SAMPLES:int,?ARG:var)
+     The predicate samples QUERY SAMPLES times.  ARG should be a
+     variable in QUERY.  The predicate plots a bar chart with a bar for
+     each value of ARG returned as a first answer by QUERY in a world
+     sampled at random.  The size of the bar is the number of samples
+     that returned that value.  The value is failure if the query fails.
+
+ -- Mcintyre:
+          mc_rejection_sample_arg_bar_r(:QUERY:atom,:EVIDENCE:atom,+SAMPLES:int,?ARG:var)
+     The predicate calls 'mc_rejection_sample_arg/5' and builds an R
+     graph of the results.  It plots a bar chart with a bar for each
+     possible value of L, the list of values of ARG for which QUERY
+     succeeds given that EVIDENCE is true The size of the bar is the
+     number of samples returning that list of values.
+
+ -- Mcintyre:
+          mc_mh_sample_arg_bar_r(:QUERY:atom,:EVIDENCE:atom,+SAMPLES:int,+LAG:int,?ARG:var)
+     The predicate calls 'mc_mh_sample_arg/6' and builds an R graph of
+     the results.  The predicate plots a bar chart with a bar for each
+     possible value of L, the list of values of ARG for which QUERY
+     succeeds in a world sampled at random.  The size of the bar is the
+     number of samples returning that list of values.
+
+ -- Mcintyre:
+          mc_mh_sample_arg_bar_r(:QUERY:atom,:EVIDENCE:atom,+SAMPLES:int,+MIX:int,+LAG:int,?ARG:var)
+     The predicate calls 'mc_mh_sample_arg/7' and builds an R graph of
+     the results.  The predicate plots a bar chart with a bar for each
+     possible value of L, the list of values of ARG for which QUERY
+     succeeds in a world sampled at random.  The size of the bar is the
+     number of samples returning that list of values.
+
+ -- Mcintyre: histogram_r(+LIST:list,+NBINS:int)
+     Draws a histogram of the samples in List dividing the domain in
+     NBINS bins.  LIST must be a list of couples of the form [V]-W or
+     V-W where V is a sampled value and W is its weight.
+
+ -- Mcintyre: density_r(+LIST:list,+NBINS:int,+MIN:float,+MAX:float)
+     Draws a line chart of the density of a sets of samples.  The
+     samples are in LIST as couples [V]-W or V-W where V is a value and
+     W its weigth.  The lines are drawn dividing the domain in NBINS
+     bins.
+
+ -- Mcintyre: densities_r(+PRIORLIST:list,+POSTLIST:list,+NBINS:int)
+     Draws a line chart of the density of two sets of samples, usually
+     prior and post observations.  The samples from the prior are in
+     PRIORLIST while the samples from the posterior are in POSTLIST as
+     couples [V]-W or V-W where V is a value and W its weigth.  The
+     lines are drawn dividing the domain in NBINS bins.
+
+ -- Auc: compute_areas_diagrams_r(+LG:list,-AUCROC:float,-AUCPR:float)
+     The predicate takes as input a list LG of pairs probability-literal
+     in asceding order on probability where the literal can be an Atom
+     (incading a positive example) or \+ Atom, indicating a negative
+     example while the probability is the probability of Atom of being
+     true.  PR and ROC diagrams are plotted.  The predicate returns:
+        * AUCROC: the size of the area under the ROC curve
+
+        * AUCPR: the size of the area under the PR curve See
+          <http://cplint.lamping.unife.it/example/exauc.pl> for an
+          example
+
+4.2 Internals
+=============
+
+Important predicates in this library follow a common structure to avoid
+confusion and promote standardization.
+
+Interface predicates are involved in the interaction between input data
+from a program and the plot of that same data.  These predicates are
+usable from the programs.
+
+As the name suggests, plotting predicates are only involved in plotting
+the data.
+
+Finally there are other functions which handle the lists and other types
+of data.
+
+4.2.1 Interface predicates
+--------------------------
+
+All interface predicates have a similar structure.  Their names end with
+'_r' (except the Helpers) in order to distinguish them from the original
+Cplint predicates.
+
+First and last operations are always 'load_r_libraries' and
+'finalize_r_graph' respectively.
+
+Plotting is done right before the last operation with one of the 'geom_'
+predicates.
+
+A skeleton of the structure follows.
+<cplint_graphing_predicate>_r(<input>):-
+    load_r_libraries,
+    <operations on the input>,
+    geom_<smt>(<new input, possibly lists>),
+    finalize_r_graph.
+
+4.2.2 Plotting predicates
+-------------------------
+
+Predicates directly involving plotting all start with 'geom_' as prefix.
+
+These predicates work with lists wich are then transformed into R data
+frames, and, as a final instruction, a corresponding plot is generated.
+
+You can visualize the structure with the following pseudocode:
+geom_<smt>(<Lists or other input>) :-
+    <handle lists>,
+    <create one or more R data frame with the lists data>,
+    <rename data frame colnames to avoid using default ones>,
+    <- ggplot <smt>
+
+4.2.3 List handling
+-------------------
+
+List handling is useful to pass information between Prolog and R. This
+is done thanks to 'build_xy_list/3', 'r_row/3' and
+'get_set_from_xy_list/2' predicates, described in the interface section.
+
+In case there are multiple distributions we simply have to call
+'get_set_from_xy_list/2' the appropriate number of times, like:
+'get_set_from_xy_list(<smt>,R#)'.
+
+4.2.4 Main data frame creation
+------------------------------
+
+As descibed before, a data frame is useful to pass structured
+information between Prolog and R.
+
+In Cplint_R in particular, we use 'r_data_frame_from_rows/2' provided by
+the Rserve Client(4) library, in the following manner:
+r_data_frame_from_rows(df[#], R[#])
+
+For each distribution the optional number is incremented by one.
+
+In case it is the last (or only) data frame then its name will simply be
+'df'.
+
+4.2.5 Helpers
+-------------
+
+What follows are some trivial predicates indicated as internal helpers.
+
+bin_width(Min,Max,NBins,Width) :-
+  D is Max-Min,
+  Width is D/NBins.
+
+load_r_libraries :-
+    <- library("ggplot2").
+
+finalize_r_graph :-
+    r_download.
+
+   ---------- Footnotes ----------
+
+   (1) See item *[SWI Prolog data types]* in *note SWI Prolog data
+types: References.
+
+   (2) See item *[LPN]* in *note LPN: References.
+
+   (3) See item *[Cplint]* in *note Cplint: References.
+
+   (4) See item *[Rserve Client]* in *note Rserve Client: References.
+
+5 Thanks
+********
+
+TODO
+
+6 References
+************
+
+Some quotations reported here are taken directly from the respective web
+sites.
+
+   * *[Cplint]* "A suite of programs for reasoning with probabilistic
+     logic programs".  See <https://github.com/friguzzi/cplint> and
+     <https://github.com/friguzzi/cplint/blob/master/doc/help-cplint.pdf>
+     for the Cplint help manual.
+
+   * *[SWI Prolog]* "SWI-Prolog offers a comprehensive free Prolog
+     environment.  Since its start in 1987, SWI-Prolog development has
+     been driven by the needs of real world applications.  SWI-Prolog is
+     widely used in research and education as well as commercial
+     applications".  See <http://www.swi-prolog.org/>
+
+   * *[R]* "R is an integrated suite of software facilities for data
+     manipulation, calculation and graphical display".  See
+     <https://cran.r-project.org/doc/manuals/r-release/R-intro.html>
+
+   * *[ggplot2]* "ggplot2 is a plotting system for R, based on the
+     grammar of graphics, which tries to take the good parts of base and
+     lattice graphics and none of the bad parts.  It takes care of many
+     of the fiddly details that make plotting a hassle (like drawing
+     legends) as well as providing a powerful model of graphics that
+     makes it easy to produce complex multi-layered graphics".  See
+     <http://ggplot2.org/>
+
+   * *[C3js]* "C3 enables deeper integration of charts into your
+     application".  See <http://c3js.org/>
+
+   * *[SWI Prolog data types]* See
+     <http://www.swi-prolog.org/datatypes.html>.
+
+   * *[LPN]* "Learn Prolog Now".  See
+     <http://www.learnprolognow.org/lpnpage.php?pagetype=html&pageid=lpn-htmlch1>.
+
+
+   * *[Cplint on SWISH]* "A set of packages that are able to build and
+     install SWISH, Cplint on SWISH and an R environment".  See
+     <https://frnmst.github.io/swish-installer/>
+
+   * *[Rserve client]* "Rserve client for SWI-Prolog/SWISH". See
+     <https://github.com/JanWielemaker/rserve_client>
+

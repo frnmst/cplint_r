@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2016 Franco Masotti franco.masotti@student.unife.it
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved. -->
+<!-- Created by GNU Texinfo 6.3, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Cplint_R Manual: Description</title>
+
+<meta name="description" content="Cplint_R Manual: Description">
+<meta name="keywords" content="Cplint_R Manual: Description">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Installation.html#Installation" rel="next" title="Installation">
+<link href="index.html#Top" rel="prev" title="Top">
+<style type="text/css">
+<!--
+/*
+ * main.css
+ *
+ * Copyright (C) 2016 frnmst (Franco Masotti) <franco.masotti@student.unife.it>
+ *
+ * This file is part of swish-installer.
+ *
+ * cplint_r is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * cplint_r is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cplint_r.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+:root {
+    background-color: #fafafa;
+    color: #040404;
+}
+
+a {
+    background-color: #fafafa;
+    color: #0000ff;
+    /* No grey dotted border. */
+    outline: 0;
+    border-style: none;
+}
+
+a:hover {
+    background-color: #040404;
+    color: #fafafa;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 24em;
+    text-decoration: none;
+}
+
+td {
+    resize: both;
+    overflow: auto;
+}
+
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Description"></a>
+<div class="header">
+<p>
+Next: <a href="Installation.html#Installation" accesskey="n" rel="next">Installation</a>, Previous: <a href="index.html#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="About"></a>
+<h2 class="chapter">1 About</h2>
+<a name="About-1"></a>
+<h3 class="section">1.1 About</h3>
+<p>The purpose of this library is to provide an interface between
+the Cplint<a name="DOCF1" href="#FOOT1"><sup>1</sup></a> suite for 
+SWI Prolog<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
+and R<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>
+to handle graphs made with the ggplot2<a name="DOCF4" href="#FOOT4"><sup>4</sup></a> package.
+</p>
+<p>This means that the currently available C3js<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>
+graphing functions are also available for R.
+</p>
+<a name="Terminology"></a>
+<h3 class="section">1.2 Terminology</h3>
+<p>Any code between <code>&lt;</code> <code>&gt;</code> represents pseudocode.
+</p>
+<p>The symbol <code>#</code> represents an unsigned integer.
+</p>
+<p>Oprional parameters are encapsuled between <code>[</code> <code>]</code>.
+</p>
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>See item <strong>[Cplint]</strong> in <a href="References.html#References">Cplint</a>.
+</p>
+<h3><a name="FOOT2" href="#DOCF2">(2)</a></h3>
+<p>See item <strong>[SWI Prolog]</strong> in <a href="References.html#References">SWI Prolog</a>.
+</p>
+<h3><a name="FOOT3" href="#DOCF3">(3)</a></h3>
+<p>See item <strong>[R]</strong> in <a href="References.html#References">R</a>.
+</p>
+<h3><a name="FOOT4" href="#DOCF4">(4)</a></h3>
+<p>See item <strong>[ggplot2]</strong> in <a href="References.html#References">ggplot2</a>.
+</p>
+<h3><a name="FOOT5" href="#DOCF5">(5)</a></h3>
+<p>See item <strong>[C3js]</strong> in <a href="References.html#References">C3js</a>.
+</p>
+</div>
+
+
+
+</body>
+</html>

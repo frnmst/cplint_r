@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Copyright (C) 2016 Franco Masotti franco.masotti@student.unife.it
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved. -->
+<!-- Created by GNU Texinfo 6.3, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Cplint_R Manual: Protocol</title>
+
+<meta name="description" content="Cplint_R Manual: Protocol">
+<meta name="keywords" content="Cplint_R Manual: Protocol">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Thanks.html#Thanks" rel="next" title="Thanks">
+<link href="Examples.html#Examples" rel="prev" title="Examples">
+<style type="text/css">
+<!--
+/*
+ * main.css
+ *
+ * Copyright (C) 2016 frnmst (Franco Masotti) <franco.masotti@student.unife.it>
+ *
+ * This file is part of swish-installer.
+ *
+ * cplint_r is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * cplint_r is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cplint_r.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+:root {
+    background-color: #fafafa;
+    color: #040404;
+}
+
+a {
+    background-color: #fafafa;
+    color: #0000ff;
+    /* No grey dotted border. */
+    outline: 0;
+    border-style: none;
+}
+
+a:hover {
+    background-color: #040404;
+    color: #fafafa;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 24em;
+    text-decoration: none;
+}
+
+td {
+    resize: both;
+    overflow: auto;
+}
+
+
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Protocol"></a>
+<div class="header">
+<p>
+Next: <a href="Thanks.html#Thanks" accesskey="n" rel="next">Thanks</a>, Previous: <a href="Examples.html#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Protocol-1"></a>
+<h2 class="chapter">4 Protocol</h2>
+<a name="Interface"></a>
+<h3 class="section">4.1 Interface</h3>
+<p>The following is a list of exported predicates available
+to the library users&rsquo;.
+</p>
+<p>Each predicate corresponds to one of the following categories
+</p><ul>
+<li> Helper: specific of this library.
+
+</li><li> Pita: it&rsquo;s part of Cplint.
+
+</li><li> Mcintyre: it&rsquo;s part of Cplint.
+
+</li><li> Auc: it&rsquo;s part of Cplint.
+</li></ul>
+
+<p>Each argument of a predicate correponds to a data type. See
+the SWI Prolog data types manual<a name="DOCF7" href="#FOOT7"><sup>7</sup></a> 
+and the Learn Prolog Now manual<a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.
+Have a look at the Cplint help manual<a name="DOCF9" href="#FOOT9"><sup>9</sup></a> to learn in 
+details about the functionality of each predicate.
+</p>
+<dl>
+<dt><a name="index-build_005fxy_005flist_0028X_003alist_002cY_003alist_002cOut_003alist_0029"></a>Helper: <strong>build_xy_list(<var>X</var>:list,<var>Y</var>:list,<var>Out</var>:list)</strong></dt>
+<dd><p>Given to lists <var>X</var> and <var>Y</var> build an output list <var>Out</var>
+in the form <code>[X1-Y1,X2-Y2,...,XN-YN]</code>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-r_005frow_0028X_003aatom_002cY_003aatom_002cr_0028X_002cY_0029_003aatom_0029"></a>Helper: <strong>r_row(<var>X</var>:atom,<var>Y</var>:atom,<var>r(X,Y)</var>:atom)</strong></dt>
+<dd><p>Given two atoms <var>X</var> and <var>Y</var>, build a relationship <var>r(X,Y)</var>.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-get_005fset_005ffrom_005fxy_005flist_0028L_003alist_002cR_003alist_0029"></a>Helper: <strong>get_set_from_xy_list(<var>L</var>:list,<var>R</var>:list)</strong></dt>
+<dd><p>Given an input list <var>L</var> in the form <code>[X1-Y1,X2-Y2,...,XN-YN]</code>,
+transform it in an output list <var>R</var> in the form
+<code>[r(X1,Y1),r(X2,Y2),...,r(XN,YN)]</code>.
+This means that <code>R</code> will contain an X-Y relationship
+which can be then passed to an R data frame.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-prob_005fbar_005fr_0028_003aQuery_003aatom_0029"></a>Pita: <strong>prob_bar_r(:<var>Query</var>:atom)</strong></dt>
+<dd><p>The predicate computes and plots the probability of <var>Query</var>
+as a bar chart with a bar for the probability of <var>Query</var> true and
+a bar for the probability of <var>Query</var> false.
+If <var>Query</var> is not ground, it returns in backtracking all ground
+instantiations of <var>Query</var> together with their probabilities.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-prob_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_0029"></a>Pita: <strong>prob_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom)</strong></dt>
+<dd><p>The predicate computes and plots the probability of <var>Query</var>
+given <var>Evidence</var>
+as a bar chart with a bar for the probability of <var>Query</var> true and
+a bar for the probability of <var>Query</var> false given <var>Evidence</var>.
+If <var>Query</var> / <var>Evidence</var> are not ground, it returns in backtracking all 
+ground
+instantiations of <var>Query</var> / <var>Evidence</var> together with their 
+probabilities.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-mc_005fprob_005fbar_005fr_0028_003aQuery_003aatom_002c_002dProbability_003adict_0029"></a>Mcintyre: <strong>mc_prob_bar_r(:<var>Query</var>:atom,-<var>Probability</var>:dict)</strong></dt>
+<dd><p>See prob_bar_r/2.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-mc_005fsample_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_0029"></a>Mcintyre: <strong>mc_sample_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int)</strong></dt>
+<dd><p>The predicate samples <var>Query</var> a number of <var>Samples</var> times and
+plots a bar chart with a bar for the number of successes and a bar for the
+number of failures.
+If <var>Query</var> is not ground, it considers it as an existential query.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-mc_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_sample_arg_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dd><p>The predicate samples <var>Query</var> <var>Samples</var> times. <var>Arg</var> should be a variable
+in <var>Query</var>.
+The predicate plots a bar chart
+with a bar for each possible value of L,
+the list of values of <var>Arg</var> for which <var>Query</var> succeeds in
+a world sampled at random.
+The size of the bar is the number of samples
+returning that list of values.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-mc_005fsample_005farg_005ffirst_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_sample_arg_first_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dd><p>The predicate samples <var>Query</var> <var>Samples</var> times. <var>Arg</var> should be a variable
+in <var>Query</var>.
+The predicate plots a bar chart
+with a bar for each value of <var>Arg</var> returned as a first answer by <var>Query</var> in
+a world sampled at random.
+The size of the bar is the number of samples that returned that value.
+The value is failure if the query fails.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-mc_005frejection_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_rejection_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dd><p>The predicate calls <code>mc_rejection_sample_arg/5</code> and builds an R graph
+of the results.
+It plots a bar chart with a bar for each possible value of L,
+the list of values of <var>Arg</var> for which <var>Query</var> succeeds
+given that <var>Evidence</var> is true
+The size of the bar is the number of samples
+returning that list of values.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-mc_005fmh_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_002bLag_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_mh_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,+<var>Lag</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dd><p>The predicate calls <code>mc_mh_sample_arg/6</code> and builds an R graph
+of the results.
+The predicate plots a bar chart
+with a bar for each possible value of L,
+the list of values of <var>Arg</var> for which <var>Query</var> succeeds in
+a world sampled at random.
+The size of the bar is the number of samples
+returning that list of values.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-mc_005fmh_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_002bMix_003aint_002c_002bLag_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_mh_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,+<var>Mix</var>:int,+<var>Lag</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dd><p>The predicate calls <code>mc_mh_sample_arg/7</code> and builds an R graph
+of the results.
+The predicate plots a bar chart
+with a bar for each possible value of L,
+the list of values of <var>Arg</var> for which <var>Query</var> succeeds in
+a world sampled at random.
+The size of the bar is the number of samples
+returning that list of values.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-histogram_005fr_0028_002bList_003alist_002c_002bNBins_003aint_0029"></a>Mcintyre: <strong>histogram_r(+<var>List</var>:list,+<var>NBins</var>:int)</strong></dt>
+<dd><p>Draws a histogram of the samples in List dividing the domain in
+<var>NBins</var> bins. <var>List</var> must be a list of couples of the form [V]-W or V-W
+where V is a sampled value and W is its weight.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-density_005fr_0028_002bList_003alist_002c_002bNBins_003aint_002c_002bMin_003afloat_002c_002bMax_003afloat_0029"></a>Mcintyre: <strong>density_r(+<var>List</var>:list,+<var>NBins</var>:int,+<var>Min</var>:float,+<var>Max</var>:float)</strong></dt>
+<dd><p>Draws a line chart of the density of a sets of samples.
+The samples are in <var>List</var>
+as couples [V]-W or V-W where V is a value and W its weigth.
+The lines are drawn dividing the domain in
+<var>NBins</var> bins.
+</p></dd></dl>
+
+<dl>
+<dt><a name="index-densities_005fr_0028_002bPriorList_003alist_002c_002bPostList_003alist_002c_002bNBins_003aint_0029"></a>Mcintyre: <strong>densities_r(+<var>PriorList</var>:list,+<var>PostList</var>:list,+<var>NBins</var>:int)</strong></dt>
+<dd><p>Draws a line chart of the density of two sets of samples, usually
+prior and post observations. The samples from the prior are in <var>PriorList</var>
+while the samples from the posterior are in <var>PostList</var>
+as couples [V]-W or V-W where V is a value and W its weigth.
+The lines are drawn dividing the domain in
+<var>NBins</var> bins.
+</p></dd></dl>
+
+
+<dl>
+<dt><a name="index-compute_005fareas_005fdiagrams_005fr_0028_002bLG_003alist_002c_002dAUCROC_003afloat_002c_002dAUCPR_003afloat_0029"></a>Auc: <strong>compute_areas_diagrams_r(+<var>LG</var>:list,-<var>AUCROC</var>:float,-<var>AUCPR</var>:float)</strong></dt>
+<dd><p>The predicate takes as input
+a list <var>LG</var> of pairs probability-literal in asceding order on probability
+where the literal can be an Atom (incading a positive example) or \+ Atom,
+indicating a negative example while the probability is the probability of
+Atom of being true. PR and ROC diagrams are plotted.
+The predicate returns:
+</p><ul>
+<li> <var>AUCROC</var>: the size of the area under the ROC curve
+
+</li><li> <var>AUCPR</var>: the size of the area under the PR curve
+See <a href="http://cplint.lamping.unife.it/example/exauc.pl">http://cplint.lamping.unife.it/example/exauc.pl</a> for an example
+</li></ul>
+</dd></dl>
+
+<a name="Internals"></a>
+<h3 class="section">4.2 Internals</h3>
+<p>Important predicates in this library follow a common structure to avoid 
+confusion and promote standardization.
+</p>
+<p>Interface predicates are involved in the interaction between input data from a 
+program and the plot of that same data. These predicates are usable from the 
+programs.
+</p>
+<p>As the name suggests, plotting predicates are only involved in plotting the 
+data.
+</p>
+<p>Finally there are other functions which handle the lists and other types of 
+data.
+</p>
+<a name="Interface-predicates"></a>
+<h4 class="subsection">4.2.1 Interface predicates</h4>
+<p>All interface predicates have a similar structure. Their names
+end with <code>_r</code> (except the Helpers) in order to distinguish them from the 
+original Cplint predicates.
+</p>
+<p>First and last operations are always <code>load_r_libraries</code> and 
+<code>finalize_r_graph</code> respectively.
+</p>
+<p>Plotting is done right before the last operation with one of the <code>geom_</code>
+predicates.
+</p>
+<p>A skeleton of the structure follows.
+</p><pre class="verbatim">&lt;cplint_graphing_predicate&gt;_r(&lt;input&gt;):-
+    load_r_libraries,
+    &lt;operations on the input&gt;,
+    geom_&lt;smt&gt;(&lt;new input, possibly lists&gt;),
+    finalize_r_graph.
+</pre>
+<a name="Plotting-predicates"></a>
+<h4 class="subsection">4.2.2 Plotting predicates</h4>
+<p>Predicates directly involving plotting all start with <code>geom_</code> as prefix.
+</p>
+<p>These predicates work with lists wich are then transformed into R data frames, 
+and, as a final instruction, a corresponding plot is generated.
+</p>
+<p>You can visualize the structure with the following pseudocode:
+</p><pre class="verbatim">geom_&lt;smt&gt;(&lt;Lists or other input&gt;) :-
+    &lt;handle lists&gt;,
+    &lt;create one or more R data frame with the lists data&gt;,
+    &lt;rename data frame colnames to avoid using default ones&gt;,
+    &lt;- ggplot &lt;smt&gt;
+</pre>
+<a name="List-handling"></a>
+<h4 class="subsection">4.2.3 List handling</h4>
+<p>List handling is useful to pass information between Prolog and
+R. This is done thanks to <code>build_xy_list/3</code>, <code>r_row/3</code> 
+and <code>get_set_from_xy_list/2</code> predicates, 
+described in the interface section.
+</p>
+<p>In case there are multiple distributions we simply have to call
+<code>get_set_from_xy_list/2</code> the appropriate number of times,
+like: <code>get_set_from_xy_list(&lt;smt&gt;,R#)</code>.
+</p>
+<a name="Main-data-frame-creation"></a>
+<h4 class="subsection">4.2.4 Main data frame creation</h4>
+<p>As descibed before, a data frame is useful to pass 
+structured information between Prolog and R.
+</p>
+<p>In Cplint_R in particular, we use <code>r_data_frame_from_rows/2</code> provided by
+the Rserve Client<a name="DOCF10" href="#FOOT10"><sup>10</sup></a> library, in the following
+manner:
+</p><pre class="verbatim">r_data_frame_from_rows(df[#], R[#])
+</pre>
+<p>For each distribution the optional number is incremented by one.
+</p>
+<p>In case it is the last (or only) data frame then its name
+will simply be <code>df</code>.
+</p>
+<a name="Helpers"></a>
+<h4 class="subsection">4.2.5 Helpers</h4>
+<p>What follows are some trivial predicates indicated as internal helpers.
+</p>
+<pre class="verbatim">bin_width(Min,Max,NBins,Width) :-
+  D is Max-Min,
+  Width is D/NBins.
+
+load_r_libraries :-
+    &lt;- library(&quot;ggplot2&quot;).
+
+finalize_r_graph :-
+    r_download.
+</pre>
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
+<p>See item <strong>[SWI Prolog data types]</strong> in <a href="References.html#References">SWI Prolog data types</a>.
+</p>
+<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
+<p>See item <strong>[LPN]</strong> in <a href="References.html#References">LPN</a>.
+</p>
+<h3><a name="FOOT9" href="#DOCF9">(9)</a></h3>
+<p>See item <strong>[Cplint]</strong> in <a href="References.html#References">Cplint</a>.
+</p>
+<h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
+<p>See item <strong>[Rserve Client]</strong> in <a href="References.html#References">Rserve Client</a>.
+</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Thanks.html#Thanks" accesskey="n" rel="next">Thanks</a>, Previous: <a href="Examples.html#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>
