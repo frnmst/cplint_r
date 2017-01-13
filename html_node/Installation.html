@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Copyright (C) 2016 Franco Masotti franco.masotti@student.unife.it
+<!-- Copyright (C) 2016-2017 Franco Masotti franco.masotti@student.unife.it
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved. -->
 <!-- Created by GNU Texinfo 6.3, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>Cplint_R Manual: Installation</title>
+<title>Cplint R Manual: Installation</title>
 
-<meta name="description" content="Cplint_R Manual: Installation">
-<meta name="keywords" content="Cplint_R Manual: Installation">
+<meta name="description" content="Cplint R Manual: Installation">
+<meta name="keywords" content="Cplint R Manual: Installation">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -111,26 +111,30 @@ Next: <a href="Examples.html#Examples" accesskey="n" rel="next">Examples</a>, Pr
 <hr>
 <a name="Installation-1"></a>
 <h2 class="chapter">2 Installation</h2>
-<p>Cplint_R is provided as part of the
-<a name="DOCF6" href="#FOOT6"><sup>6</sup></a> package.
+<p>Cplint R is provided as part of the
+Cplint on SWISH<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>
+package. This is the recomended and simplest way to obtain a working
+installation without too much trouble.
 </p>
 <p>You can also install it manually with <code>pack_install('cplint_r').</code>
-using the <code>swipl</code> command.
+using the <code>swipl</code> command on UNIX-like systems. Unfortunately, doing 
+this is not enough since you need to setup an R environment with the 
+components described in the following section. For more information, have a
+look at the
+SWISH Installer Manual<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>
 </p>
 <a name="Dependencies"></a>
 <h3 class="section">2.1 Dependencies</h3>
-<p>Cplint_R has both Prolog and R dependencies:
+<p>Cplint R has both Prolog and R dependencies:
 </p>
 <a name="Prolog"></a>
 <h4 class="subsection">2.1.1 Prolog</h4>
 <ul>
-<li> lists
+<li> Cplint
 
-</li><li> Cplint
+</li><li> Rserve Client<a name="DOCF8" href="#FOOT8"><sup>8</sup></a>
 
-</li><li> Rserve Client
-
-</li><li> SWISH R library ???
+</li><li> R SWISH library<a name="DOCF9" href="#FOOT9"><sup>9</sup></a>
 
 </li></ul>
 
@@ -138,6 +142,9 @@ using the <code>swipl</code> command.
 <h4 class="subsection">2.1.2 R</h4>
 <ul>
 <li> ggplot2
+
+</li><li> Rserve<a name="DOCF10" href="#FOOT10"><sup>10</sup></a>
+
 </li></ul>
 
 
@@ -147,6 +154,18 @@ using the <code>swipl</code> command.
 
 <h3><a name="FOOT6" href="#DOCF6">(6)</a></h3>
 <p>See item <strong>[Cplint on SWISH]</strong> in <a href="References.html#References">Cplint on SWISH</a>.
+</p>
+<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
+<p>See item <strong>[SWISH Installer Manual]</strong> in <a href="References.html#References">SWISH Installer Manual</a>.
+</p>
+<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
+<p>See item <strong>[Rserve Client]</strong> in <a href="References.html#References">Rserve Client</a>.
+</p>
+<h3><a name="FOOT9" href="#DOCF9">(9)</a></h3>
+<p>See item <strong>[R SWISH]</strong> in <a href="References.html#References">R SWISH</a>.
+</p>
+<h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
+<p>See item <strong>[Rserve]</strong> in <a href="References.html#References">Rserve</a>.
 </p>
 </div>
 

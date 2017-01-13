@@ -6,16 +6,20 @@ Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved. -->
 <!-- Created by GNU Texinfo 6.3, http://www.gnu.org/software/texinfo/ -->
-<!-- This file redirects to the location of a node or anchor -->
 <head>
-<title>Cplint R Manual: Cplint</title>
+<title>Cplint R Manual: Development</title>
 
-<meta name="description" content="Cplint R Manual: Cplint">
-<meta name="keywords" content="Cplint R Manual: Cplint">
+<meta name="description" content="Cplint R Manual: Development">
+<meta name="keywords" content="Cplint R Manual: Development">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Thanks.html#Thanks" rel="next" title="Thanks">
+<link href="Protocol.html#Protocol" rel="prev" title="Protocol">
 <style type="text/css">
 <!--
 /*
@@ -95,11 +99,42 @@ td {
 -->
 </style>
 
-<meta http-equiv="Refresh" content="0; url=References.html#Cplint">
 
 </head>
 
 <body lang="en">
+<a name="Development"></a>
+<div class="header">
+<p>
+Next: <a href="Thanks.html#Thanks" accesskey="n" rel="next">Thanks</a>, Previous: <a href="Protocol.html#Protocol" accesskey="p" rel="prev">Protocol</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<a name="Development-1"></a>
+<h2 class="chapter">5 Development</h2>
+<a name="Compiling-this-documentation"></a>
+<h3 class="section">5.1 Compiling this documentation</h3>
+<p>The source of this documentation is under the <samp>doc</samp>
+directory.
+</p>
+<p>To be able to compile it, you have to install several tex packages
+(for example: <code>texlive-most</code> and <code>texi2html</code> if you are using
+Arch Linux) that contain the following binaries:
+</p>
+<pre class="verbatim">makeinfo
+texi2dvi
+docbook2html
+docbook2pdf
+docbook2txt
+texi2html
+perl
+</pre>
+<p>After running <code>make</code>, a directory named <samp>manual</samp>
+is created and you can access the files by opening
+<samp>index.html</samp> with a browser.
+</p>
 
-<p>The node you are looking for is at <a href="References.html#Cplint">Cplint</a>.</p>
+
+
+
 </body>
+</html>

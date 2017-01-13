@@ -1,4 +1,4 @@
-Cplint_R
+Cplint R
 1 About
   1.1 About
   1.2 Terminology
@@ -15,12 +15,14 @@ Cplint_R
     4.2.3 List handling
     4.2.4 Main data frame creation
     4.2.5 Helpers
-5 Thanks
-6 References
-Cplint_R
+5 Development
+  5.1 Compiling this documentation
+6 Thanks
+7 References
+Cplint R
 ********
 
-This manual is for Cplint_R.
+This manual is for Cplint R program version 0.0.3
 
 1 About
 *******
@@ -32,8 +34,8 @@ The purpose of this library is to provide an interface between the
 Cplint(1) suite for SWI Prolog(2) and R(3) to handle graphs made with
 the ggplot2(4) package.
 
-This means that the currently available C3js(5) graphing functions are
-also available for R.
+This means that most C3js(5) graphing functions of Cplint are also
+available for R.
 
 1.2 Terminology
 ===============
@@ -42,7 +44,7 @@ Any code between '<' '>' represents pseudocode.
 
 The symbol '#' represents an unsigned integer.
 
-Oprional parameters are encapsuled between '[' ']'.
+Optional parameters are encapsuled between '[' ']'.
 
    ---------- Footnotes ----------
 
@@ -59,41 +61,56 @@ Oprional parameters are encapsuled between '[' ']'.
 2 Installation
 **************
 
-Cplint_R is provided as part of the (1) package.
+Cplint R is provided as part of the Cplint on SWISH(1) package.  This is
+the recomended and simplest way to obtain a working installation without
+too much trouble.
 
 You can also install it manually with 'pack_install('cplint_r').' using
-the 'swipl' command.
+the 'swipl' command on UNIX-like systems.  Unfortunately, doing this is
+not enough since you need to setup an R environment with the components
+described in the following section.  For more information, have a look
+at the SWISH Installer Manual(2)
 
 2.1 Dependencies
 ================
 
-Cplint_R has both Prolog and R dependencies:
+Cplint R has both Prolog and R dependencies:
 
 2.1.1 Prolog
 ------------
 
-   * lists
-
    * Cplint
 
-   * Rserve Client
+   * Rserve Client(3)
 
-   * SWISH R library ???
+   * R SWISH library(4)
 
 2.1.2 R
 -------
 
    * ggplot2
 
+   * Rserve(5)
+
    ---------- Footnotes ----------
 
    (1) See item *[Cplint on SWISH]* in *note Cplint on SWISH:
 References.
 
+   (2) See item *[SWISH Installer Manual]* in *note SWISH Installer
+Manual: References.
+
+   (3) See item *[Rserve Client]* in *note Rserve Client: References.
+
+   (4) See item *[R SWISH]* in *note R SWISH: References.
+
+   (5) See item *[Rserve]* in *note Rserve: References.
+
 3 Examples
 **********
 
-TODO
+See all the files ending in "_R.pl" on
+<https://github.com/friguzzi/swish/tree/master/examples/inference>
 
 4 Protocol
 **********
@@ -107,11 +124,11 @@ users'.
 Each predicate corresponds to one of the following categories
    * Helper: specific of this library.
 
-   * Pita: it's part of Cplint.
+   * Pita: part of Cplint.
 
-   * Mcintyre: it's part of Cplint.
+   * Mcintyre: part of Cplint.
 
-   * Auc: it's part of Cplint.
+   * Auc: part of Cplint.
 
 Each argument of a predicate correponds to a data type.  See the SWI
 Prolog data types manual(1) and the Learn Prolog Now manual(2).  Have a
@@ -122,8 +139,8 @@ functionality of each predicate.
      Given to lists X and Y build an output list OUT in the form
      '[X1-Y1,X2-Y2,...,XN-YN]'.
 
- -- Helper: r_row(X:atom,Y:atom,R(X,Y):atom)
-     Given two atoms X and Y, build a relationship R(X,Y).
+ -- Helper: r_row(X:atom,Y:atom,OUT:atom)
+     Given two atoms X and Y, build a relationship 'r(X,Y)' in OUT.
 
  -- Helper: get_set_from_xy_list(L:list,R:list)
      Given an input list L in the form '[X1-Y1,X2-Y2,...,XN-YN]',
@@ -221,9 +238,10 @@ functionality of each predicate.
      true.  PR and ROC diagrams are plotted.  The predicate returns:
         * AUCROC: the size of the area under the ROC curve
 
-        * AUCPR: the size of the area under the PR curve See
-          <http://cplint.lamping.unife.it/example/exauc.pl> for an
-          example
+        * AUCPR: the size of the area under the PR curve
+
+     See <http://cplint.lamping.unife.it/example/exauc.pl> for an
+     example.
 
 4.2 Internals
 =============
@@ -293,8 +311,8 @@ In case there are multiple distributions we simply have to call
 As descibed before, a data frame is useful to pass structured
 information between Prolog and R.
 
-In Cplint_R in particular, we use 'r_data_frame_from_rows/2' provided by
-the Rserve Client(4) library, in the following manner:
+In Cplint R in particular, we use 'r_data_frame_from_rows/2' provided by
+the Rserve Client library, in the following manner:
 r_data_frame_from_rows(df[#], R[#])
 
 For each distribution the optional number is incremented by one.
@@ -326,14 +344,35 @@ types: References.
 
    (3) See item *[Cplint]* in *note Cplint: References.
 
-   (4) See item *[Rserve Client]* in *note Rserve Client: References.
+5 Development
+*************
 
-5 Thanks
+5.1 Compiling this documentation
+================================
+
+The source of this documentation is under the 'doc' directory.
+
+To be able to compile it, you have to install several tex packages (for
+example: 'texlive-most' and 'texi2html' if you are using Arch Linux)
+that contain the following binaries:
+
+makeinfo
+texi2dvi
+docbook2html
+docbook2pdf
+docbook2txt
+texi2html
+perl
+
+After running 'make', a directory named 'manual' is created and you can
+access the files by opening 'index.html' with a browser.
+
+6 Thanks
 ********
 
 TODO
 
-6 References
+7 References
 ************
 
 Some quotations reported here are taken directly from the respective web
@@ -376,6 +415,19 @@ sites.
      install SWISH, Cplint on SWISH and an R environment".  See
      <https://frnmst.github.io/swish-installer/>
 
-   * *[Rserve client]* "Rserve client for SWI-Prolog/SWISH". See
+   * *[Rserve Client]* "SWI-Prolog/SWISH client for Rserve".  "The
+     container exposes Rserve using a Unix-domain socket in
+     /home/rserve/socket".  See
      <https://github.com/JanWielemaker/rserve_client>
+
+   * *[R SWISH]* A library that talks between SWISH and Rserve.  See
+     <https://github.com/SWI-Prolog/swish/blob/master/lib/r_swish.pl>
+
+   * *[Rserve]* "Rserve is a TCP/IP server which allows other programs
+     to use facilities of R (see www.r-project.org) from various
+     languages without the need to initialize R or link against R
+     library."  See <https://www.rforge.net/Rserve/>
+
+   * *[SWISH Installer Manual]* See
+     <https://frnmst.github.io/swish-installer/>
 

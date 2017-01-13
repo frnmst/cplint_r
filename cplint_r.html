@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Copyright (C) 2016 Franco Masotti franco.masotti@student.unife.it
+<!-- Copyright (C) 2016-2017 Franco Masotti franco.masotti@student.unife.it
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved. -->
 <!-- Created by GNU Texinfo 6.3, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>Cplint_R Manual</title>
+<title>Cplint R Manual</title>
 
-<meta name="description" content="Cplint_R Manual">
-<meta name="keywords" content="Cplint_R Manual">
+<meta name="description" content="Cplint R Manual">
+<meta name="keywords" content="Cplint R Manual">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -101,7 +101,7 @@ td {
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">Cplint_R Manual</h1>
+<h1 class="settitle" align="center">Cplint R Manual</h1>
 
 
 
@@ -180,8 +180,12 @@ td {
       <li><a name="toc-Helpers" href="#Helpers">4.2.5 Helpers</a></li>
     </ul></li>
   </ul></li>
-  <li><a name="toc-Thanks-1" href="#Thanks">5 Thanks</a></li>
-  <li><a name="toc-References-1" href="#References">6 References</a></li>
+  <li><a name="toc-Development-1" href="#Development">5 Development</a>
+  <ul class="no-bullet">
+    <li><a name="toc-Compiling-this-documentation" href="#Compiling-this-documentation">5.1 Compiling this documentation</a></li>
+  </ul></li>
+  <li><a name="toc-Thanks-1" href="#Thanks">6 Thanks</a></li>
+  <li><a name="toc-References-1" href="#References">7 References</a></li>
 </ul>
 </div>
 
@@ -191,10 +195,10 @@ td {
 <p>
 Next: <a href="#Description" accesskey="n" rel="next">Description</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<a name="Cplint_005fR"></a>
-<h1 class="top">Cplint_R</h1>
+<a name="Cplint-R"></a>
+<h1 class="top">Cplint R</h1>
 
-<p>This manual is for Cplint_R.
+<p>This manual is for Cplint R program version 0.0.3
 </p>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Description" accesskey="1">Description</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A brief description of what this is all about
@@ -205,9 +209,11 @@ Next: <a href="#Description" accesskey="n" rel="next">Description</a>, Up: <a hr
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Protocol" accesskey="4">Protocol</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Formal descriprion of the protocol
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Thanks" accesskey="5">Thanks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">People and communities
+<tr><td align="left" valign="top">&bull; <a href="#Development" accesskey="5">Development</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">A thorough description on how to develop this library
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#References" accesskey="6">References</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">References to the technologies used
+<tr><td align="left" valign="top">&bull; <a href="#Thanks" accesskey="6">Thanks</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">People and communities
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#References" accesskey="7">References</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">References to the technologies used
 </td></tr>
 </table>
 
@@ -228,8 +234,8 @@ SWI Prolog<a name="DOCF2" href="#FOOT2"><sup>2</sup></a>
 and R<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>
 to handle graphs made with the ggplot2<a name="DOCF4" href="#FOOT4"><sup>4</sup></a> package.
 </p>
-<p>This means that the currently available C3js<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>
-graphing functions are also available for R.
+<p>This means that most C3js<a name="DOCF5" href="#FOOT5"><sup>5</sup></a>
+graphing functions of Cplint are also available for R.
 </p>
 <a name="Terminology"></a>
 <h3 class="section">1.2 Terminology</h3>
@@ -237,7 +243,7 @@ graphing functions are also available for R.
 </p>
 <p>The symbol <code>#</code> represents an unsigned integer.
 </p>
-<p>Oprional parameters are encapsuled between <code>[</code> <code>]</code>.
+<p>Optional parameters are encapsuled between <code>[</code> <code>]</code>.
 </p>
 
 <hr>
@@ -248,26 +254,30 @@ Next: <a href="#Examples" accesskey="n" rel="next">Examples</a>, Previous: <a hr
 </div>
 <a name="Installation-1"></a>
 <h2 class="chapter">2 Installation</h2>
-<p>Cplint_R is provided as part of the
-<a name="DOCF6" href="#FOOT6"><sup>6</sup></a> package.
+<p>Cplint R is provided as part of the
+Cplint on SWISH<a name="DOCF6" href="#FOOT6"><sup>6</sup></a>
+package. This is the recomended and simplest way to obtain a working
+installation without too much trouble.
 </p>
 <p>You can also install it manually with <code>pack_install('cplint_r').</code>
-using the <code>swipl</code> command.
+using the <code>swipl</code> command on UNIX-like systems. Unfortunately, doing 
+this is not enough since you need to setup an R environment with the 
+components described in the following section. For more information, have a
+look at the
+SWISH Installer Manual<a name="DOCF7" href="#FOOT7"><sup>7</sup></a>
 </p>
 <a name="Dependencies"></a>
 <h3 class="section">2.1 Dependencies</h3>
-<p>Cplint_R has both Prolog and R dependencies:
+<p>Cplint R has both Prolog and R dependencies:
 </p>
 <a name="Prolog"></a>
 <h4 class="subsection">2.1.1 Prolog</h4>
 <ul>
-<li> lists
+<li> Cplint
 
-</li><li> Cplint
+</li><li> Rserve Client<a name="DOCF8" href="#FOOT8"><sup>8</sup></a>
 
-</li><li> Rserve Client
-
-</li><li> SWISH R library ???
+</li><li> R SWISH library<a name="DOCF9" href="#FOOT9"><sup>9</sup></a>
 
 </li></ul>
 
@@ -275,6 +285,9 @@ using the <code>swipl</code> command.
 <h4 class="subsection">2.1.2 R</h4>
 <ul>
 <li> ggplot2
+
+</li><li> Rserve<a name="DOCF10" href="#FOOT10"><sup>10</sup></a>
+
 </li></ul>
 
 
@@ -287,14 +300,15 @@ Next: <a href="#Protocol" accesskey="n" rel="next">Protocol</a>, Previous: <a hr
 <a name="Examples-1"></a>
 <h2 class="chapter">3 Examples</h2>
 
-<p>TODO
+<p>See all the files ending in &quot;_R.pl&quot; on 
+<a href="https://github.com/friguzzi/swish/tree/master/examples/inference">https://github.com/friguzzi/swish/tree/master/examples/inference</a>
 </p>
 
 <hr>
 <a name="Protocol"></a>
 <div class="header">
 <p>
-Next: <a href="#Thanks" accesskey="n" rel="next">Thanks</a>, Previous: <a href="#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="#Development" accesskey="n" rel="next">Development</a>, Previous: <a href="#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <a name="Protocol-1"></a>
 <h2 class="chapter">4 Protocol</h2>
@@ -307,17 +321,17 @@ to the library users&rsquo;.
 </p><ul>
 <li> Helper: specific of this library.
 
-</li><li> Pita: it&rsquo;s part of Cplint.
+</li><li> Pita: part of Cplint.
 
-</li><li> Mcintyre: it&rsquo;s part of Cplint.
+</li><li> Mcintyre: part of Cplint.
 
-</li><li> Auc: it&rsquo;s part of Cplint.
+</li><li> Auc: part of Cplint.
 </li></ul>
 
 <p>Each argument of a predicate correponds to a data type. See
-the SWI Prolog data types manual<a name="DOCF7" href="#FOOT7"><sup>7</sup></a> 
-and the Learn Prolog Now manual<a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.
-Have a look at the Cplint help manual<a name="DOCF9" href="#FOOT9"><sup>9</sup></a> to learn in 
+the SWI Prolog data types manual<a name="DOCF11" href="#FOOT11"><sup>11</sup></a> 
+and the Learn Prolog Now manual<a name="DOCF12" href="#FOOT12"><sup>12</sup></a>.
+Have a look at the Cplint help manual<a name="DOCF13" href="#FOOT13"><sup>13</sup></a> to learn in 
 details about the functionality of each predicate.
 </p>
 <dl>
@@ -327,8 +341,9 @@ in the form <code>[X1-Y1,X2-Y2,...,XN-YN]</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-r_005frow_0028X_003aatom_002cY_003aatom_002cr_0028X_002cY_0029_003aatom_0029"></a>Helper: <strong>r_row(<var>X</var>:atom,<var>Y</var>:atom,<var>r(X,Y)</var>:atom)</strong></dt>
-<dd><p>Given two atoms <var>X</var> and <var>Y</var>, build a relationship <var>r(X,Y)</var>.
+<dt><a name="index-r_005frow_0028X_003aatom_002cY_003aatom_002cOut_003aatom_0029"></a>Helper: <strong>r_row(<var>X</var>:atom,<var>Y</var>:atom,<var>Out</var>:atom)</strong></dt>
+<dd><p>Given two atoms <var>X</var> and <var>Y</var>, build a relationship <code>r(X,Y)</code>
+in <var>Out</var>.
 </p></dd></dl>
 
 <dl>
@@ -471,9 +486,10 @@ The predicate returns:
 <li> <var>AUCROC</var>: the size of the area under the ROC curve
 
 </li><li> <var>AUCPR</var>: the size of the area under the PR curve
-See <a href="http://cplint.lamping.unife.it/example/exauc.pl">http://cplint.lamping.unife.it/example/exauc.pl</a> for an example
 </li></ul>
-</dd></dl>
+
+<p>See <a href="http://cplint.lamping.unife.it/example/exauc.pl">http://cplint.lamping.unife.it/example/exauc.pl</a> for an example.
+</p></dd></dl>
 
 <a name="Internals"></a>
 <h3 class="section">4.2 Internals</h3>
@@ -539,8 +555,8 @@ like: <code>get_set_from_xy_list(&lt;smt&gt;,R#)</code>.
 <p>As descibed before, a data frame is useful to pass 
 structured information between Prolog and R.
 </p>
-<p>In Cplint_R in particular, we use <code>r_data_frame_from_rows/2</code> provided by
-the Rserve Client<a name="DOCF10" href="#FOOT10"><sup>10</sup></a> library, in the following
+<p>In Cplint R in particular, we use <code>r_data_frame_from_rows/2</code> provided by
+the Rserve Client library, in the following
 manner:
 </p><pre class="verbatim">r_data_frame_from_rows(df[#], R[#])
 </pre>
@@ -565,13 +581,43 @@ finalize_r_graph :-
 </pre>
 
 <hr>
+<a name="Development"></a>
+<div class="header">
+<p>
+Next: <a href="#Thanks" accesskey="n" rel="next">Thanks</a>, Previous: <a href="#Protocol" accesskey="p" rel="prev">Protocol</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<a name="Development-1"></a>
+<h2 class="chapter">5 Development</h2>
+<a name="Compiling-this-documentation"></a>
+<h3 class="section">5.1 Compiling this documentation</h3>
+<p>The source of this documentation is under the <samp>doc</samp>
+directory.
+</p>
+<p>To be able to compile it, you have to install several tex packages
+(for example: <code>texlive-most</code> and <code>texi2html</code> if you are using
+Arch Linux) that contain the following binaries:
+</p>
+<pre class="verbatim">makeinfo
+texi2dvi
+docbook2html
+docbook2pdf
+docbook2txt
+texi2html
+perl
+</pre>
+<p>After running <code>make</code>, a directory named <samp>manual</samp>
+is created and you can access the files by opening
+<samp>index.html</samp> with a browser.
+</p>
+
+<hr>
 <a name="Thanks"></a>
 <div class="header">
 <p>
-Next: <a href="#References" accesskey="n" rel="next">References</a>, Previous: <a href="#Protocol" accesskey="p" rel="prev">Protocol</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="#References" accesskey="n" rel="next">References</a>, Previous: <a href="#Development" accesskey="p" rel="prev">Development</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <a name="Thanks-1"></a>
-<h2 class="chapter">5 Thanks</h2>
+<h2 class="chapter">6 Thanks</h2>
 <p>TODO
 </p>
 
@@ -582,7 +628,7 @@ Next: <a href="#References" accesskey="n" rel="next">References</a>, Previous: <
 Previous: <a href="#Thanks" accesskey="p" rel="prev">Thanks</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <a name="References-1"></a>
-<h2 class="chapter">6 References</h2>
+<h2 class="chapter">7 References</h2>
 
 <p>Some quotations reported here are taken directly from the respective web sites.
 <br>
@@ -642,10 +688,28 @@ install SWISH, Cplint on SWISH and an R environment&quot;.
 See <a href="https://frnmst.github.io/swish-installer/">https://frnmst.github.io/swish-installer/</a>
 <br>
 
-</li><li> <a name="Rserve-client"></a><strong>[Rserve client]</strong>
- &quot;Rserve client for SWI-Prolog/SWISH&quot;.
+</li><li> <a name="Rserve-Client"></a><strong>[Rserve Client]</strong>
+ &quot;SWI-Prolog/SWISH client for Rserve&quot;.
+&quot;The container exposes Rserve using a Unix-domain socket in 
+/home/rserve/socket&quot;.
 See <a href="https://github.com/JanWielemaker/rserve_client">https://github.com/JanWielemaker/rserve_client</a>
 <br>
+
+</li><li> <a name="R-SWISH"></a><strong>[R SWISH]</strong>
+ A library that talks between SWISH and Rserve.
+See <a href="https://github.com/SWI-Prolog/swish/blob/master/lib/r_swish.pl">https://github.com/SWI-Prolog/swish/blob/master/lib/r_swish.pl</a>
+<br>
+
+</li><li> <a name="Rserve"></a><strong>[Rserve]</strong>
+ &quot;Rserve is a TCP/IP server which allows other programs to 
+use facilities of R (see www.r-project.org) from various languages without the 
+need to initialize R or link against R library.&quot;
+See <a href="https://www.rforge.net/Rserve/">https://www.rforge.net/Rserve/</a>
+<br>
+
+</li><li> <a name="SWISH-Installer-Manual"></a><strong>[SWISH Installer Manual]</strong>
+ See 
+<a href="https://frnmst.github.io/swish-installer/">https://frnmst.github.io/swish-installer/</a>
 
 </li></ul>
 
@@ -672,16 +736,25 @@ See <a href="https://github.com/JanWielemaker/rserve_client">https://github.com/
 <p>See item <strong>[Cplint on SWISH]</strong> in <a href="#References">Cplint on SWISH</a>.
 </p>
 <h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
-<p>See item <strong>[SWI Prolog data types]</strong> in <a href="#References">SWI Prolog data types</a>.
+<p>See item <strong>[SWISH Installer Manual]</strong> in <a href="#References">SWISH Installer Manual</a>.
 </p>
 <h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
-<p>See item <strong>[LPN]</strong> in <a href="#References">LPN</a>.
+<p>See item <strong>[Rserve Client]</strong> in <a href="#References">Rserve Client</a>.
 </p>
 <h3><a name="FOOT9" href="#DOCF9">(9)</a></h3>
-<p>See item <strong>[Cplint]</strong> in <a href="#References">Cplint</a>.
+<p>See item <strong>[R SWISH]</strong> in <a href="#References">R SWISH</a>.
 </p>
 <h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
-<p>See item <strong>[Rserve Client]</strong> in <a href="#References">Rserve Client</a>.
+<p>See item <strong>[Rserve]</strong> in <a href="#References">Rserve</a>.
+</p>
+<h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
+<p>See item <strong>[SWI Prolog data types]</strong> in <a href="#References">SWI Prolog data types</a>.
+</p>
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
+<p>See item <strong>[LPN]</strong> in <a href="#References">LPN</a>.
+</p>
+<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
+<p>See item <strong>[Cplint]</strong> in <a href="#References">Cplint</a>.
 </p>
 </div>
 <hr>

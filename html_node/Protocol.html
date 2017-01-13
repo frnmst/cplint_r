@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Copyright (C) 2016 Franco Masotti franco.masotti@student.unife.it
+<!-- Copyright (C) 2016-2017 Franco Masotti franco.masotti@student.unife.it
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved. -->
 <!-- Created by GNU Texinfo 6.3, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>Cplint_R Manual: Protocol</title>
+<title>Cplint R Manual: Protocol</title>
 
-<meta name="description" content="Cplint_R Manual: Protocol">
-<meta name="keywords" content="Cplint_R Manual: Protocol">
+<meta name="description" content="Cplint R Manual: Protocol">
+<meta name="keywords" content="Cplint R Manual: Protocol">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -18,7 +18,7 @@ notice and this notice are preserved. -->
 <link href="index.html#Top" rel="start" title="Top">
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
-<link href="Thanks.html#Thanks" rel="next" title="Thanks">
+<link href="Development.html#Development" rel="next" title="Development">
 <link href="Examples.html#Examples" rel="prev" title="Examples">
 <style type="text/css">
 <!--
@@ -106,7 +106,7 @@ td {
 <a name="Protocol"></a>
 <div class="header">
 <p>
-Next: <a href="Thanks.html#Thanks" accesskey="n" rel="next">Thanks</a>, Previous: <a href="Examples.html#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Development.html#Development" accesskey="n" rel="next">Development</a>, Previous: <a href="Examples.html#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <hr>
 <a name="Protocol-1"></a>
@@ -120,17 +120,17 @@ to the library users&rsquo;.
 </p><ul>
 <li> Helper: specific of this library.
 
-</li><li> Pita: it&rsquo;s part of Cplint.
+</li><li> Pita: part of Cplint.
 
-</li><li> Mcintyre: it&rsquo;s part of Cplint.
+</li><li> Mcintyre: part of Cplint.
 
-</li><li> Auc: it&rsquo;s part of Cplint.
+</li><li> Auc: part of Cplint.
 </li></ul>
 
 <p>Each argument of a predicate correponds to a data type. See
-the SWI Prolog data types manual<a name="DOCF7" href="#FOOT7"><sup>7</sup></a> 
-and the Learn Prolog Now manual<a name="DOCF8" href="#FOOT8"><sup>8</sup></a>.
-Have a look at the Cplint help manual<a name="DOCF9" href="#FOOT9"><sup>9</sup></a> to learn in 
+the SWI Prolog data types manual<a name="DOCF11" href="#FOOT11"><sup>11</sup></a> 
+and the Learn Prolog Now manual<a name="DOCF12" href="#FOOT12"><sup>12</sup></a>.
+Have a look at the Cplint help manual<a name="DOCF13" href="#FOOT13"><sup>13</sup></a> to learn in 
 details about the functionality of each predicate.
 </p>
 <dl>
@@ -140,8 +140,9 @@ in the form <code>[X1-Y1,X2-Y2,...,XN-YN]</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-r_005frow_0028X_003aatom_002cY_003aatom_002cr_0028X_002cY_0029_003aatom_0029"></a>Helper: <strong>r_row(<var>X</var>:atom,<var>Y</var>:atom,<var>r(X,Y)</var>:atom)</strong></dt>
-<dd><p>Given two atoms <var>X</var> and <var>Y</var>, build a relationship <var>r(X,Y)</var>.
+<dt><a name="index-r_005frow_0028X_003aatom_002cY_003aatom_002cOut_003aatom_0029"></a>Helper: <strong>r_row(<var>X</var>:atom,<var>Y</var>:atom,<var>Out</var>:atom)</strong></dt>
+<dd><p>Given two atoms <var>X</var> and <var>Y</var>, build a relationship <code>r(X,Y)</code>
+in <var>Out</var>.
 </p></dd></dl>
 
 <dl>
@@ -284,9 +285,10 @@ The predicate returns:
 <li> <var>AUCROC</var>: the size of the area under the ROC curve
 
 </li><li> <var>AUCPR</var>: the size of the area under the PR curve
-See <a href="http://cplint.lamping.unife.it/example/exauc.pl">http://cplint.lamping.unife.it/example/exauc.pl</a> for an example
 </li></ul>
-</dd></dl>
+
+<p>See <a href="http://cplint.lamping.unife.it/example/exauc.pl">http://cplint.lamping.unife.it/example/exauc.pl</a> for an example.
+</p></dd></dl>
 
 <a name="Internals"></a>
 <h3 class="section">4.2 Internals</h3>
@@ -352,8 +354,8 @@ like: <code>get_set_from_xy_list(&lt;smt&gt;,R#)</code>.
 <p>As descibed before, a data frame is useful to pass 
 structured information between Prolog and R.
 </p>
-<p>In Cplint_R in particular, we use <code>r_data_frame_from_rows/2</code> provided by
-the Rserve Client<a name="DOCF10" href="#FOOT10"><sup>10</sup></a> library, in the following
+<p>In Cplint R in particular, we use <code>r_data_frame_from_rows/2</code> provided by
+the Rserve Client library, in the following
 manner:
 </p><pre class="verbatim">r_data_frame_from_rows(df[#], R[#])
 </pre>
@@ -381,23 +383,20 @@ finalize_r_graph :-
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT7" href="#DOCF7">(7)</a></h3>
+<h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
 <p>See item <strong>[SWI Prolog data types]</strong> in <a href="References.html#References">SWI Prolog data types</a>.
 </p>
-<h3><a name="FOOT8" href="#DOCF8">(8)</a></h3>
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p>See item <strong>[LPN]</strong> in <a href="References.html#References">LPN</a>.
 </p>
-<h3><a name="FOOT9" href="#DOCF9">(9)</a></h3>
+<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
 <p>See item <strong>[Cplint]</strong> in <a href="References.html#References">Cplint</a>.
-</p>
-<h3><a name="FOOT10" href="#DOCF10">(10)</a></h3>
-<p>See item <strong>[Rserve Client]</strong> in <a href="References.html#References">Rserve Client</a>.
 </p>
 </div>
 <hr>
 <div class="header">
 <p>
-Next: <a href="Thanks.html#Thanks" accesskey="n" rel="next">Thanks</a>, Previous: <a href="Examples.html#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="Development.html#Development" accesskey="n" rel="next">Development</a>, Previous: <a href="Examples.html#Examples" accesskey="p" rel="prev">Examples</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
 
