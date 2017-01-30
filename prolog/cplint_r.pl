@@ -31,16 +31,10 @@
             mc_mh_sample_arg_bar_r/5,
             mc_mh_sample_arg_bar_r/6,
             histogram_r/2,
-            density_r/4,
-            densities_r/3,
+            density_r/1,
+            densities_r/2,
             compute_areas_diagrams_r/3
           ]).
-
-
-/* 
- * Reexport library(mcintyre) and library(pita)
- * once I figure out how to do it.
- */
 
 
 /* Dependencies */
@@ -88,7 +82,7 @@ check_modules :-
 
 /* Debug purposes
  *
- *  use_rendering(table).
+ *  use_rendering(table). % should be available by default.
  *  <- df. % name of a data frame.
  */
 
@@ -128,7 +122,7 @@ build_xy_list([XH|XT], [YH|YT], [XH-YH|Out]) :-
 /**
  * r_row(X:atom,Y:atom,Out:atom) is det
  *
- * Given two atoms X and Y, build term r(X,Y) in Out.
+ * Given two atoms X and Y, build the term r(X,Y) in Out.
  */
 r_row(X,Y,r(X,Y)).
 
@@ -235,7 +229,7 @@ prob_bar_r(M:Goal,M:Evidence):-
  */
 mc_prob_bar_r(M:Goal):-
     load_r_libraries,
-    s(M:Goal,PT),
+    mc_prob(M:Goal,PT),
     PF is 1.0-PT,
     geom_prob_bar(PT,PF),
     finalize_r_graph.
@@ -447,22 +441,6 @@ mc_mh_sample_arg_bar_r(M:Goal,M:Ev,S,L,Arg):-
     geom_mc_mh_sample_arg_bar(ValList),
     finalize_r_graph.
 
-/*
- * BinWidth was added because it was recomended on the R documentation,
- * see docs.ggplot2.org/current/geom_histogram.html
- */
-geom_histogram(L,BinWidth) :-
-    binwidtH <- BinWidth,
-    get_set_from_xy_list(L,R),
-    r_data_frame_from_rows(df, R),
-    colnames(df) <- c("x", "y"),
-    <- qplot(
-        x,
-        data=df,
-        geom="histogram",
-        weight=y,
-        binwidth=binwidtH
-	).
 
 geom_histogram(L,Min,Max,BinWidth) :-
     binwidtH <- BinWidth,
@@ -470,14 +448,19 @@ geom_histogram(L,Min,Max,BinWidth) :-
     r_data_frame_from_rows(df, R),
     colnames(df) <- c("x", "y"),
     miN <- Min,
-    maX <- Max, 
-    <- qplot(
-        x,
+    maX <- Max,
+    <- ggplot(
         data=df,
-        geom="histogram",
-        weight=y,
+        aes_string(
+            x="x"
+        )
+    ) + geom_histogram(
+        weight="y",
         binwidth=binwidtH
-	)+xlim(miN,maX).
+    ) + xlim(
+        miN,
+        maX
+    ).
 
 /**
  * histogram_r(+List:list,+NBins:int) is det
@@ -486,13 +469,6 @@ geom_histogram(L,Min,Max,BinWidth) :-
  * NBins bins. List must be a list of couples of the form [V]-W or V-W
  * where V is a sampled value and W is its weight.
  */
-/*histogram_r(L,NBins) :-
-  load_r_libraries,
-  df<- L,
-  nbinS <- NBins,
-  <- qplot(df,geom="histogram",bins=nbinS).
-*/
-
 histogram_r(L0,NBins) :-
     load_r_libraries,
     maplist(to_pair,L0,L1),
@@ -521,99 +497,77 @@ geom_density(L) :-
     get_set_from_xy_list(L,R),
     r_data_frame_from_rows(df, R),
     colnames(df) <- c("x", "y"),
-   <- ggplot(
+    <- ggplot(
         data=df,
-        aes_string(
-            x="x",
-            y="y",
-            group=1
-        ))
-    +  geom_density().
+        aes(x)
+    ) + geom_density(
+            aes(
+                fill="density",
+                weights=y
+            ),
+            alpha=0.5
+    ).
 
 /**
- * density_r(+List:list,+NBins:int,+Min:float,+Max:float) is det
+ * density_r(+List:list) is det
  *
+ * COMMENTS MUST BE CORRECTED
  * Draws a line chart of the density of a sets of samples.
  * The samples are in List
  * as couples [V]-W or V-W where V is a value and W its weigth.
- * The lines are drawn dividing the domain in
- * NBins bins.
  */
-density_r(Post0,NBins,Min,Max) :-
-    load_r_libraries,
-    maplist(to_pair,Post0,Post),
-    bin_width(Min,Max,NBins,BinWidth),
-    keysort(Post,Po),
-    bin(NBins,Po,Min,BinWidth,LPo),
-    geom_density(LPo),
-    finalize_r_graph.
-
+density_r(Post0) :-
+     load_r_libraries,
+     maplist(to_pair,Post0,Post),
+     geom_density(Post),
+     finalize_r_graph.
 
 geom_densities(LPr,LPo) :-
     get_set_from_xy_list(LPr,R1),
     get_set_from_xy_list(LPo,R2),
     r_data_frame_from_rows(df1, R1),
     r_data_frame_from_rows(df2, R2),
-    colnames(df1) <- c("x", "y1"),
-    colnames(df2) <- c("x", "y2"),
+    colnames(df1) <- c("x1", "y1"),
+    colnames(df2) <- c("x2", "y2"),
     df <- data.frame(
-        x=df1$x,
+        x1=df1$x1,
+        x2=df2$x2,
         y1=df1$y1,
         y2=df2$y2
-    ),    
+    ),
+    alphA <- 0.5,
     <- ggplot(
-        data=df,
-        aes(
-            x=x
-        )
-    ) + geom_line(
-        aes(
-            color="pre",
-            y=y1
-        )
-    ) + geom_line(
-        aes(
-            color="post",
-            y=y2
-        )
-    ) + geom_point(
-        aes(
-            color="pre",
-            y=y1
-        )
-    ) + geom_point(
-        aes(
-            color="post",
-            y=y2
-        )
-    ) + ylab("y").
-
+        data=df
+    ) + geom_density(
+            aes(
+                x=x1,
+                fill="pre",
+                weights=y1
+            ),
+            alpha=alphA
+    ) + geom_density(
+            aes(
+                x=x2,
+                fill="post",
+                weights=y2
+            ),
+            alpha=alphA
+    ) + xlab("x").
 
 /**
- * densities_r(+PriorList:list,+PostList:list,+NBins:int) is det
+ * densities_r(+PriorList:list,+PostList:list) is det
  *
+ * COMMENT MUST BE CORRECTED
  * Draws a line chart of the density of two sets of samples, usually
  * prior and post observations. The samples from the prior are in PriorList
  * while the samples from the posterior are in PostList
  * as couples [V]-W or V-W where V is a value and W its weigth.
- * The lines are drawn dividing the domain in
- * NBins bins.
  */
-densities_r(Pri0,Post0,NBins) :-
+densities_r(Pri0,Post0) :-
     load_r_libraries,
     maplist(to_pair,Pri0,Pri1),
     maplist(to_pair,Post0,Post1),
-    maplist(key,Pri1,Pri),
-    maplist(key,Post1,Post),
-    append(Pri,Post,All),
-    max_list(All,Max),
-    min_list(All,Min),
-    bin_width(Min,Max,NBins,BinWidth),
-    keysort(Pri1,Pr),
-    keysort(Post0,Po),
-    bin(NBins,Pr,Min,BinWidth,LPr),
-    bin(NBins,Po,Min,BinWidth,LPo),
-    geom_densities(LPr,LPo),
+    geom_densities(Pri1,Post1),
     finalize_r_graph.
 
 /* auc */
@@ -678,8 +632,8 @@ sandbox:safe_primitive(cplint_r:build_xy_list(_,_,_)).
 sandbox:safe_primitive(cplint_r:r_row(_,_,_)).
 sandbox:safe_primitive(cplint_r:get_set_from_xy_list(_,_)).
 sandbox:safe_primitive(cplint_r:histogram_r(_,_)).
-sandbox:safe_primitive(cplint_r:density_r(_,_,_,_)).
-sandbox:safe_primitive(cplint_r:densities_r(_,_,_)).
+sandbox:safe_primitive(cplint_r:density_r(_)).
+sandbox:safe_primitive(cplint_r:densities_r(_,_)).
 sandbox:safe_primitive(cplint_r:compute_areas_diagrams_r(_,_,_)).
 
 sandbox:safe_meta(cplint_r:prob_bar_r(_),[]).

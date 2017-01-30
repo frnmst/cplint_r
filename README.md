@@ -18,7 +18,7 @@ written by Raivo Laanemets.
 ## Example
 
 Taken from
-[here](https://github.com/friguzzi/swish/blob/master/examples/inference/gpr_R.pl)
+[here](https://github.com/friguzzi/swish/blob/master/examples/inference/gaussian_mixture_R.pl)
 
 ```
 /*
@@ -62,6 +62,14 @@ representing
 % the probability density of X 
 ```
 
+The query
+
+    ?- hist_uncond(10000,40).
+
+Gives the following
+
+![histogram_r_example.png](images/histogram_r_example.png)
+
 ## Installation
 
     ?- pack_install('cplint_r').
@@ -82,6 +90,8 @@ or, if you cloned the repo:
     $ make test
 
 ## Changelogs 
+
+2017-01-?? version 0.0.4. Improved histogram_r/?, density_r/? and denities_r/?. 
 
 2017-01-13 version 0.0.3. Fixed minor issues.
 
