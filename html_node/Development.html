@@ -111,10 +111,19 @@ Next: <a href="Thanks.html#Thanks" accesskey="n" rel="next">Thanks</a>, Previous
 <hr>
 <a name="Development-1"></a>
 <h2 class="chapter">5 Development</h2>
+<a name="Changing-the-library"></a>
+<h3 class="section">5.1 Changing the library</h3>
+<p>You are welcomed to change this library. In order to test it you simply have to
+place you modified version in the correct path and restart SWISH. If you have 
+used the packages provided with SWISH Installer this can be achieved with the 
+following:
+</p><pre class="verbatim"># mv &lt;your_modified_cplint_r_library&gt; /home/swish/lib/swipl/pack/cplint_r/prolog/cplint_r.pl
+# systemctl restart swish-cplint
+</pre>
 <a name="Compiling-this-documentation"></a>
-<h3 class="section">5.1 Compiling this documentation</h3>
+<h3 class="section">5.2 Compiling this documentation</h3>
 <p>The source of this documentation is under the <samp>doc</samp>
-directory.
+directory of the repository.
 </p>
 <p>To be able to compile it, you have to install several tex packages
 (for example: <code>texlive-most</code> and <code>texi2html</code> if you are using
@@ -129,7 +138,7 @@ texi2html
 perl
 </pre>
 <p>After running <code>make</code>, a directory named <samp>manual</samp>
-is created and you can access the files by opening
+will be created and you can access all the files by opening
 <samp>index.html</samp> with a browser.
 </p>
 

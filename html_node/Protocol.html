@@ -128,25 +128,25 @@ to the library users&rsquo;.
 </li></ul>
 
 <p>Each argument of a predicate correponds to a data type. See
-the SWI Prolog data types manual<a name="DOCF11" href="#FOOT11"><sup>11</sup></a> 
-and the Learn Prolog Now manual<a name="DOCF12" href="#FOOT12"><sup>12</sup></a>.
-Have a look at the Cplint help manual<a name="DOCF13" href="#FOOT13"><sup>13</sup></a> to learn in 
+the SWI Prolog data types manual<a name="DOCF12" href="#FOOT12"><sup>12</sup></a> 
+and the Learn Prolog Now manual<a name="DOCF13" href="#FOOT13"><sup>13</sup></a>.
+Have a look at the Cplint help manual<a name="DOCF14" href="#FOOT14"><sup>14</sup></a> to learn in 
 details about the functionality of each predicate.
 </p>
 <dl>
-<dt><a name="index-build_005fxy_005flist_0028X_003alist_002cY_003alist_002cOut_003alist_0029"></a>Helper: <strong>build_xy_list(<var>X</var>:list,<var>Y</var>:list,<var>Out</var>:list)</strong></dt>
+<dt><a name="index-build_005fxy_005flist_0028_002bX_003alist_002c_002bY_003alist_002c_002dOut_003alist_0029"></a>Helper: <strong>build_xy_list(+<var>X</var>:list,+<var>Y</var>:list,-<var>Out</var>:list)</strong> <em>is det</em></dt>
 <dd><p>Given to lists <var>X</var> and <var>Y</var> build an output list <var>Out</var>
 in the form <code>[X1-Y1,X2-Y2,...,XN-YN]</code>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-r_005frow_0028X_003aatom_002cY_003aatom_002cOut_003aatom_0029"></a>Helper: <strong>r_row(<var>X</var>:atom,<var>Y</var>:atom,<var>Out</var>:atom)</strong></dt>
-<dd><p>Given two atoms <var>X</var> and <var>Y</var>, build a relationship <code>r(X,Y)</code>
+<dt><a name="index-r_005frow_0028_002bX_003aatom_002c_002bY_003aatom_002c_002dOut_003aatom_0029"></a>Helper: <strong>r_row(+<var>X</var>:atom,+<var>Y</var>:atom,-<var>Out</var>:atom)</strong> <em>is det</em></dt>
+<dd><p>Given two atoms <var>X</var> and <var>Y</var>, build the term <code>r(X,Y)</code>
 in <var>Out</var>.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-get_005fset_005ffrom_005fxy_005flist_0028L_003alist_002cR_003alist_0029"></a>Helper: <strong>get_set_from_xy_list(<var>L</var>:list,<var>R</var>:list)</strong></dt>
+<dt><a name="index-get_005fset_005ffrom_005fxy_005flist_0028_002bL_003alist_002c_002dR_003alist_0029"></a>Helper: <strong>get_set_from_xy_list(+<var>L</var>:list,-<var>R</var>:list)</strong> <em>is det</em></dt>
 <dd><p>Given an input list <var>L</var> in the form <code>[X1-Y1,X2-Y2,...,XN-YN]</code>,
 transform it in an output list <var>R</var> in the form
 <code>[r(X1,Y1),r(X2,Y2),...,r(XN,YN)]</code>.
@@ -155,7 +155,7 @@ which can be then passed to an R data frame.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-prob_005fbar_005fr_0028_003aQuery_003aatom_0029"></a>Pita: <strong>prob_bar_r(:<var>Query</var>:atom)</strong></dt>
+<dt><a name="index-prob_005fbar_005fr_0028_003aQuery_003aatom_0029"></a>Pita: <strong>prob_bar_r(:<var>Query</var>:atom)</strong> <em>is nondet</em></dt>
 <dd><p>The predicate computes and plots the probability of <var>Query</var>
 as a bar chart with a bar for the probability of <var>Query</var> true and
 a bar for the probability of <var>Query</var> false.
@@ -164,7 +164,7 @@ instantiations of <var>Query</var> together with their probabilities.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-prob_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_0029"></a>Pita: <strong>prob_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom)</strong></dt>
+<dt><a name="index-prob_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_0029"></a>Pita: <strong>prob_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom)</strong> <em>is nondet</em></dt>
 <dd><p>The predicate computes and plots the probability of <var>Query</var>
 given <var>Evidence</var>
 as a bar chart with a bar for the probability of <var>Query</var> true and
@@ -176,12 +176,12 @@ probabilities.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-mc_005fprob_005fbar_005fr_0028_003aQuery_003aatom_002c_002dProbability_003adict_0029"></a>Mcintyre: <strong>mc_prob_bar_r(:<var>Query</var>:atom,-<var>Probability</var>:dict)</strong></dt>
+<dt><a name="index-mc_005fprob_005fbar_005fr_0028_003aQuery_003aatom_002c_002dProbability_003adict_0029"></a>Mcintyre: <strong>mc_prob_bar_r(:<var>Query</var>:atom,-<var>Probability</var>:dict)</strong> <em>is det</em></dt>
 <dd><p>See prob_bar_r/2.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-mc_005fsample_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_0029"></a>Mcintyre: <strong>mc_sample_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int)</strong></dt>
+<dt><a name="index-mc_005fsample_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_0029"></a>Mcintyre: <strong>mc_sample_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int)</strong> <em>is det</em></dt>
 <dd><p>The predicate samples <var>Query</var> a number of <var>Samples</var> times and
 plots a bar chart with a bar for the number of successes and a bar for the
 number of failures.
@@ -189,7 +189,7 @@ If <var>Query</var> is not ground, it considers it as an existential query.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-mc_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_sample_arg_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dt><a name="index-mc_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_sample_arg_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong> <em>is det</em></dt>
 <dd><p>The predicate samples <var>Query</var> <var>Samples</var> times. <var>Arg</var> should be a variable
 in <var>Query</var>.
 The predicate plots a bar chart
@@ -201,7 +201,7 @@ returning that list of values.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-mc_005fsample_005farg_005ffirst_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_sample_arg_first_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dt><a name="index-mc_005fsample_005farg_005ffirst_005fbar_005fr_0028_003aQuery_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_sample_arg_first_bar_r(:<var>Query</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong> <em>is det</em></dt>
 <dd><p>The predicate samples <var>Query</var> <var>Samples</var> times. <var>Arg</var> should be a variable
 in <var>Query</var>.
 The predicate plots a bar chart
@@ -212,7 +212,7 @@ The value is failure if the query fails.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-mc_005frejection_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_rejection_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dt><a name="index-mc_005frejection_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_rejection_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,?<var>Arg</var>:var)</strong> <em>is det</em></dt>
 <dd><p>The predicate calls <code>mc_rejection_sample_arg/5</code> and builds an R graph
 of the results.
 It plots a bar chart with a bar for each possible value of L,
@@ -223,7 +223,7 @@ returning that list of values.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-mc_005fmh_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_002bLag_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_mh_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,+<var>Lag</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dt><a name="index-mc_005fmh_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_002bLag_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_mh_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,+<var>Lag</var>:int,?<var>Arg</var>:var)</strong> <em>is det</em></dt>
 <dd><p>The predicate calls <code>mc_mh_sample_arg/6</code> and builds an R graph
 of the results.
 The predicate plots a bar chart
@@ -235,7 +235,7 @@ returning that list of values.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-mc_005fmh_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_002bMix_003aint_002c_002bLag_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_mh_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,+<var>Mix</var>:int,+<var>Lag</var>:int,?<var>Arg</var>:var)</strong></dt>
+<dt><a name="index-mc_005fmh_005fsample_005farg_005fbar_005fr_0028_003aQuery_003aatom_002c_003aEvidence_003aatom_002c_002bSamples_003aint_002c_002bMix_003aint_002c_002bLag_003aint_002c_003fArg_003avar_0029"></a>Mcintyre: <strong>mc_mh_sample_arg_bar_r(:<var>Query</var>:atom,:<var>Evidence</var>:atom,+<var>Samples</var>:int,+<var>Mix</var>:int,+<var>Lag</var>:int,?<var>Arg</var>:var)</strong> <em>is det</em></dt>
 <dd><p>The predicate calls <code>mc_mh_sample_arg/7</code> and builds an R graph
 of the results.
 The predicate plots a bar chart
@@ -247,34 +247,31 @@ returning that list of values.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-histogram_005fr_0028_002bList_003alist_002c_002bNBins_003aint_0029"></a>Mcintyre: <strong>histogram_r(+<var>List</var>:list,+<var>NBins</var>:int)</strong></dt>
+<dt><a name="index-histogram_005fr_0028_002bList_003alist_002c_002bNBins_003aint_0029"></a>Mcintyre: <strong>histogram_r(+<var>List</var>:list,+<var>NBins</var>:int)</strong> <em>is det</em></dt>
 <dd><p>Draws a histogram of the samples in List dividing the domain in
 <var>NBins</var> bins. <var>List</var> must be a list of couples of the form [V]-W or V-W
 where V is a sampled value and W is its weight.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-density_005fr_0028_002bList_003alist_002c_002bNBins_003aint_002c_002bMin_003afloat_002c_002bMax_003afloat_0029"></a>Mcintyre: <strong>density_r(+<var>List</var>:list,+<var>NBins</var>:int,+<var>Min</var>:float,+<var>Max</var>:float)</strong></dt>
-<dd><p>Draws a line chart of the density of a sets of samples.
+<dt><a name="index-density_005fr_0028_002bList_003alist_0029"></a>Mcintyre: <strong>density_r(+<var>List</var>:list)</strong> <em>is det</em></dt>
+<dd><p>Display a smooth density estimate of a sets of samples.
 The samples are in <var>List</var>
-as couples [V]-W or V-W where V is a value and W its weigth.
-The lines are drawn dividing the domain in
-<var>NBins</var> bins.
+as couples V-W where V is a value and W its weigth.
 </p></dd></dl>
 
+
 <dl>
-<dt><a name="index-densities_005fr_0028_002bPriorList_003alist_002c_002bPostList_003alist_002c_002bNBins_003aint_0029"></a>Mcintyre: <strong>densities_r(+<var>PriorList</var>:list,+<var>PostList</var>:list,+<var>NBins</var>:int)</strong></dt>
-<dd><p>Draws a line chart of the density of two sets of samples, usually
+<dt><a name="index-densities_005fr_0028_002bPriorList_003alist_002c_002bPostList_003alist_0029"></a>Mcintyre: <strong>densities_r(+<var>PriorList</var>:list,+<var>PostList</var>:list)</strong> <em>is det</em></dt>
+<dd><p>Display a smooth density estimate of two sets of samples, usually
 prior and post observations. The samples from the prior are in <var>PriorList</var>
 while the samples from the posterior are in <var>PostList</var>
-as couples [V]-W or V-W where V is a value and W its weigth.
-The lines are drawn dividing the domain in
-<var>NBins</var> bins.
+as couples V-W where V is a value and W its weigth.
 </p></dd></dl>
 
 
 <dl>
-<dt><a name="index-compute_005fareas_005fdiagrams_005fr_0028_002bLG_003alist_002c_002dAUCROC_003afloat_002c_002dAUCPR_003afloat_0029"></a>Auc: <strong>compute_areas_diagrams_r(+<var>LG</var>:list,-<var>AUCROC</var>:float,-<var>AUCPR</var>:float)</strong></dt>
+<dt><a name="index-compute_005fareas_005fdiagrams_005fr_0028_002bLG_003alist_002c_002dAUCROC_003afloat_002c_002dAUCPR_003afloat_0029"></a>Auc: <strong>compute_areas_diagrams_r(+<var>LG</var>:list,-<var>AUCROC</var>:float,-<var>AUCPR</var>:float)</strong> <em>is det</em></dt>
 <dd><p>The predicate takes as input
 a list <var>LG</var> of pairs probability-literal in asceding order on probability
 where the literal can be an Atom (incading a positive example) or \+ Atom,
@@ -321,22 +318,22 @@ predicates.
 </p><pre class="verbatim">&lt;cplint_graphing_predicate&gt;_r(&lt;input&gt;):-
     load_r_libraries,
     &lt;operations on the input&gt;,
-    geom_&lt;smt&gt;(&lt;new input, possibly lists&gt;),
+    geom_&lt;something&gt;(&lt;new input, possibly lists&gt;),
     finalize_r_graph.
 </pre>
 <a name="Plotting-predicates"></a>
 <h4 class="subsection">4.2.2 Plotting predicates</h4>
-<p>Predicates directly involving plotting all start with <code>geom_</code> as prefix.
+<p>Predicates directly involved in plotting all start with <code>geom_</code> as prefix.
 </p>
-<p>These predicates work with lists wich are then transformed into R data frames, 
+<p>These predicates work with lists which are then transformed into R data frames, 
 and, as a final instruction, a corresponding plot is generated.
 </p>
 <p>You can visualize the structure with the following pseudocode:
-</p><pre class="verbatim">geom_&lt;smt&gt;(&lt;Lists or other input&gt;) :-
+</p><pre class="verbatim">geom_&lt;something&gt;(&lt;Lists and/or other input&gt;) :-
     &lt;handle lists&gt;,
     &lt;create one or more R data frame with the lists data&gt;,
     &lt;rename data frame colnames to avoid using default ones&gt;,
-    &lt;- ggplot &lt;smt&gt;
+    &lt;- ggplot &lt;something&gt;
 </pre>
 <a name="List-handling"></a>
 <h4 class="subsection">4.2.3 List handling</h4>
@@ -347,7 +344,7 @@ described in the interface section.
 </p>
 <p>In case there are multiple distributions we simply have to call
 <code>get_set_from_xy_list/2</code> the appropriate number of times,
-like: <code>get_set_from_xy_list(&lt;smt&gt;,R#)</code>.
+like: <code>get_set_from_xy_list(&lt;something&gt;,R#)</code>.
 </p>
 <a name="Main-data-frame-creation"></a>
 <h4 class="subsection">4.2.4 Main data frame creation</h4>
@@ -366,7 +363,8 @@ will simply be <code>df</code>.
 </p>
 <a name="Helpers"></a>
 <h4 class="subsection">4.2.5 Helpers</h4>
-<p>What follows are some trivial predicates indicated as internal helpers.
+<p>What follows are extracts of some trivial predicates indicated as internal 
+helpers.
 </p>
 <pre class="verbatim">bin_width(Min,Max,NBins,Width) :-
   D is Max-Min,
@@ -383,13 +381,13 @@ finalize_r_graph :-
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h3><a name="FOOT11" href="#DOCF11">(11)</a></h3>
+<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
 <p>See item <strong>[SWI Prolog data types]</strong> in <a href="References.html#References">SWI Prolog data types</a>.
 </p>
-<h3><a name="FOOT12" href="#DOCF12">(12)</a></h3>
+<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
 <p>See item <strong>[LPN]</strong> in <a href="References.html#References">LPN</a>.
 </p>
-<h3><a name="FOOT13" href="#DOCF13">(13)</a></h3>
+<h3><a name="FOOT14" href="#DOCF14">(14)</a></h3>
 <p>See item <strong>[Cplint]</strong> in <a href="References.html#References">Cplint</a>.
 </p>
 </div>
